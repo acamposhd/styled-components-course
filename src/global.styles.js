@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+
 :root {
     --primary: #645cff;
     --white: #fff;
@@ -12,12 +16,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background: #f2f4f8;
 }
-
-.title {
-    text-align: center;
-    text-transform: capitalize;
-}
-
 .btn {
     background: #645cff;
     color: #fff;
@@ -30,11 +28,7 @@ body {
     margin: 1rem auto;
 }
 
-.bg-grey {
-    background: grey;
-}
 
-.title {
-    text-transform: uppercase;
-    color: red;
-}
+`;
+
+export default GlobalStyles;

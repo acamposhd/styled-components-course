@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import Card from "./components/Card";
+import GlobalStyles from "./global.styles";
+
+const BaseTheme = {
+    color: "#222",
+    background: "#fff",
+};
+const DarkTheme = {
+    color: "#fff",
+    background: "#222",
+};
+
+const Container = styled.div`
+    padding: 2rem;
+    color: ${({ theme }) => theme.color};
+    background: ${({ theme }) => theme.background};
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [baseTheme, setTheme] = useState(true);
+    const toggleTheme = () => {
+        setTheme((currentTheme) => !currentTheme);
+    };
+    return (
+        <ThemeProvider theme={baseTheme ? BaseTheme : DarkTheme}>
+            <GlobalStyles />
+            <Container>
+                <h1>HelloWorld</h1>
+                <button onClick={toggleTheme} className="btn">
+                    toggle me
+                </button>
+            </Container>
+            {/* <Card /> */}
+        </ThemeProvider>
+    );
 }
 
 export default App;
